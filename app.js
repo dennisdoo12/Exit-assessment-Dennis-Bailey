@@ -12,7 +12,6 @@ const error = document.querySelector("#error");
 function render(snack, term){
 
     list.innerHTML = "";
-    const term = search.value.toLowerCase();
 
     snacks
     .filter(snack => snack.name.toLowerCase().includes(term) && !snack.eaten)
