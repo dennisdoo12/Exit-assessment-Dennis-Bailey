@@ -9,23 +9,23 @@ const error = document.querySelector("#error");
 
 
 
-function render(){
+function render(snack, term){
 
     list.innerHTML = "";
     const term = search.value.toLowerCase();
 
     snacks
-    .filter(snack => snack.name.toLowerCase().includes(term))
-.forEach(snack => {
-    const li = document.createElement("li");
-    li.textContent = `${snack.name} --- ${snack.category}--- ${snack.calories} cal`;
+    .filter(snack => snack.name.toLowerCase().includes(term) && !snack.eaten)
+    .forEach(snack => {
+        const li = document.createElement("li");
+        li.textContent = `${snack.name} - ${snack.category} - ${snack.calories} cal`;
 
-    li.addEventListener("click",() =>{
-        li.classList.toggle("eaten");
+        li.addEventListener("click",() => {
+            li.classList.toggle("eaten");
+        });
+
+        list.appendChild(li);
     });
-
-    list.appendChild(li);
-});
 }
 
 
@@ -34,9 +34,6 @@ fetch("./data.json")
 .then(data => {
     snacks = data.snacks;
     render();
-})
-.catch((error) => {
-    error.textContent = "error loading the snacks";
 });
 
 search.addEventListener("input", render);
@@ -59,13 +56,12 @@ form.addEventlistener("submit", event => {
     }
 
     snacks.push({
-        id: Date.now(),
         name:name,category: category, calories: calories
     });
 
     form.reset();
     error.textContent = "";
-    render();
+    render(snacks, search.value);
 });
 
     
