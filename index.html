@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title Snack Tracker</title>
+        <link rel="stylesheet" href="style.css">
+        <script src ="app.js" defer></script>
+    </head>
+    <body> 
+        <!-- <header> -->
+        <title>Snack Tracker</title>
+        <p>Keep track of all snacks. Searching them adding them and marking as eaten them.</p>
+
+        <!-- </header> -->
+
+        <main> 
+            <section>
+            <label for="search">Search snacks to eat</label>
+
+            <input id="search" type="text" placeholder="Search by name"/>
+
+
+            </section>
+
+            <form>
+            
+            <h2>Adding snacks form</h2>
+            <label>
+                Name
+                <input name="name" type="text"/>
+            </label>
+
+            <label>
+                Category
+                <input name ="category" type="text"/>
+            </label>
+
+            <label>Calories
+                <input name = "calories" type = "number"/>
+            </label>
+            <button type="submit"> Add Snack Button</button>
+            </form>
+
+            <p id="error"></p>
+            <ul id ="list"></ul>
+        </main>
+    </body>
+</html>
