@@ -32,7 +32,7 @@ fetch("./data.json")
 .then(response => response.json())
 .then(data => {
     snacks = data.snacks;
-    render();
+    render(snacks, search.value);
 });
 
 search.addEventListener("input", render);
