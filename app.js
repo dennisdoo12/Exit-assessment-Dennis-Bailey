@@ -18,7 +18,7 @@ function render(){
     .filter(snack => snack.name.toLowerCase().includes(term))
 .forEach(snack => {
     const li = document.createElement("li");
-    li.textContent = '${snack.name} --- ${snack.category}--- ${snack.calories} cal';
+    li.textContent = `${snack.name} --- ${snack.category}--- ${snack.calories} cal`;
 
     li.addEventListener("click",() =>{
         li.classList.toggle("eaten");
@@ -48,7 +48,7 @@ form.addEventlistener("submit", event => {
     const category = form.elements.category.value.trim();
     const calories = Number(form.elements.calories.value);
 
-    if(!name || category || !form.elements.calories.value.trim()){
+    if(!name || !category || !form.elements.calories.value.trim()){
         error.textContent = "Please fill in all fields";
         return;
     }
@@ -60,7 +60,7 @@ form.addEventlistener("submit", event => {
 
     snacks.push({
         id: Date.now(),
-        name,category, calories
+        name:name,category: category, calories: calories
     });
 
     form.reset();
